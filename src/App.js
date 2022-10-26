@@ -26,7 +26,7 @@ function App() {
     {/* Hello */}
     <Addcontact />
     
-  <contactlist />
+  <Contactlist />
   </div>
   ); 
   

@@ -16,7 +16,7 @@ class Addcontact extends Component{
                 name="name"
                  placeholder="Name"
                   value={this.state.name} 
-                  onChange={ (e) => this.setstate({name: e.target.v})}/>
+                  onChange={ (e) => this.setState({name: e.target.v})}/>
             </div>
             <div className="field">
               <label>Email</label>
@@ -24,7 +24,7 @@ class Addcontact extends Component{
                 name="email"
                  placeholder="email"
                  value={this.state.name} 
-                 onChange={ (e) => this.setstate({name: e.target.v})}
+                 onChange={ (e) => this.setState({name: e.target.v})}
                  />
             </div>
             <button className="ui button blue">Add</button>

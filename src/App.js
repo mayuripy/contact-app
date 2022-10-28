@@ -5,15 +5,16 @@ import Addcontact from  "./components/Addcontact";
 import Contactlist from "./components/Contactlist";
 
 function App() {
-  const[contacts, setcontact]= useState([])
+  const[contacts, setContact]= useState([])
   
   return( 
   <div className="ui container">
     <Header />
     
-    <Addcontact addcontactHandaler={addcontactHandler} />
+    {/* <Addcontact addcontactHandaler={addcontactHandler} /> */}
+    <Addcontact />
     
-  <Contactlist contact={contacts} />
+  <Contactlist contacts={contacts} />
   </div>
   ); 
   

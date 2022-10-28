@@ -1,7 +1,7 @@
 import React from 'react';
 import user from " ../images/user.png"
 
-const Cardcontact = (props) => {
+const Contactcard = (props) => {
   const{id,name,email} = props.contact;
     return(
         <div className="item">
@@ -18,4 +18,4 @@ const Cardcontact = (props) => {
     );
 };
 
-export default contactcard;
+export default Contactcard;

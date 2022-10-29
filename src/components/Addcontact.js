@@ -7,15 +7,15 @@ class Addcontact extends Component{
   };
 
   add = (e) => {
-    e.preventdefault();
-    if(this.state.name === "" || this.state,email === ""){
+    e.preventDefault();
+    if(this.state.name === "" || this.state.email === ""){
       alert("All the fields are mandatory!")
       return;
     }
-    this.props.AddcontactHandler(this.stare);
+    this.props.addcontactHandler(this.state);
     this.setState({ name: "", email: ""});
     
-  
+  console.log(this.state.contacts)
   };
  render(){
     return(
@@ -28,7 +28,7 @@ class Addcontact extends Component{
                 name="name"
                  placeholder="Name"
                   value={this.state.name} 
-                  onChange={ (e) => this.setState({Name: e.target.v})}/>
+                  onChange={ (e) => this.setState({name: e.target.value})}/>
             </div>
             <div className="field">
               <label>Email</label>
@@ -36,10 +36,10 @@ class Addcontact extends Component{
                 name="email"
                  placeholder="Email"
                  value={this.state.email} 
-                 onChange={ (e) => this.setState({Email: e.target.v})}
+                 onChange={ (e) => this.setState({email: e.target.value})}
                  />
             </div>
-            <button className="ui button blue">Add</button>
+            <button type='submit' className="ui button blue">Add</button>
           </form>
         </div>
 

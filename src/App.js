@@ -5,13 +5,19 @@ import Addcontact from  "./components/Addcontact";
 import Contactlist from "./components/Contactlist";
 
 function App() {
+  const LOCAL_STORAGE_KEY = "CONTACTS";
   const [contacts, setContacts]= useState([])
   const addcontactHandaler = (contact) => {
     console.log(contact);
-    setContacts([...contact, contact]);
+    setContacts([...contacts, contact]);
   };
-   
-  useInsertionEffect()
+  useInsertionEffect(() => {
+   const retriveconracts =  localStorage.setItem((LOCAL_STORAGE_KEY,JSON.stringify(contact)));
+  }, [contacts]);
+
+  useInsertionEffect(() => {
+    localStorage.setItem((LOCAL_STORAGE_KEY,JSON.stringify(contact)));
+  }, [contacts]);
 
 
   return( 
@@ -21,10 +27,10 @@ function App() {
      <Addcontact addcontactHandaler={addcontactHandler}/>
     
     
-  <Contactlist contacts={contacts} />
+  <Contactlist contacts={contacts}/>
   </div>
   ); 
   
-}
+};
 
 export default App;

@@ -9,36 +9,28 @@ import Contactlist from "./components/Contactlist";
 function App() {
   const LOCAL_STORAGE_KEY = "CONTACTS";
 
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(JSON.parse(localStorage.getItem('CONTACTS')) ?? [])
 
   const addcontactHandler = (contact) => {
-    console.log(contact);
+    // console.log(contact);
     setContacts([...contacts, { id: uuidv4(), ...contact }]);
-    console.log(contacts);
-    localStorage.setItem(
-      LOCAL_STORAGE_KEY,
-      JSON.stringify(contacts)
-    );
+    localStorage.removeItem(LOCAL_STORAGE_KEY);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
   };
 
   const removecontact = (id) => {
     const newContactlist = contacts.filter((contact) => {
       return contact.id !== id;
     });
+
     setContacts(newContactlist);
+    localStorage.removeItem(LOCAL_STORAGE_KEY);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
   };
 
   useEffect(() => {
-    const retriveContacts = localStorage.setItem(
-      LOCAL_STORAGE_KEY,
-      JSON.stringify(contacts)
-    );
-    console.log(retriveContacts)
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
   }, [contacts]);
-
-  // useInsertionEffect(() => {
-  //   localStorage.setItem((LOCAL_STORAGE_KEY,JSON.stringify(contact)));
-  // }, [contacts]);
 
   return (
     <div className="ui container">
@@ -61,10 +53,6 @@ function App() {
             }
           />
         </Routes>
-
-        {/*<Addcontact contacts={contacts} addcontactHandler={addcontactHandler}/> */}
-
-        {/*  <Contactlist contacts={contacts} getcontactId = {removecontact}/> */}
       </Router>
     </div>
   );

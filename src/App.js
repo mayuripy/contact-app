@@ -12,7 +12,7 @@ function App() {
   const [contacts, setContacts] = useState(JSON.parse(localStorage.getItem('CONTACTS')) ?? []);
 
   const addcontactHandler = (contact) => {
-    console.log(contact);
+    // console.log(contact);
     setContacts([...contacts, { id: uuidv4(), ...contact }]);
     console.log(contacts);
     localStorage.removeItem(LOCAL_STORAGE_KEY)
@@ -26,6 +26,7 @@ function App() {
     const newContactlist = contacts.filter((contact) => {
       return contact.id !== id;
     });
+
     setContacts(newContactlist);
     localStorage.removeItem(LOCAL_STORAGE_KEY)
     localStorage.setItem(
@@ -41,10 +42,6 @@ function App() {
     );
   
   }, [contacts]);
-
-  // useInsertionEffect(() => {
-  //   localStorage.setItem((LOCAL_STORAGE_KEY,JSON.stringify(contact)));
-  // }, [contacts]);
 
   return (
     <div className="ui container">
@@ -67,10 +64,6 @@ function App() {
             }
           />
         </Routes>
-
-        {/*<Addcontact contacts={contacts} addcontactHandler={addcontactHandler}/> */}
-
-        {/*  <Contactlist contacts={contacts} getcontactId = {removecontact}/> */}
       </Router>
     </div>
   );

@@ -16,6 +16,7 @@ class Addcontact extends Component{
     this.setState({ name: "", email: ""});
     
   console.log(this.props.contacts)
+  window.location.replace('/')
   };
  render(){
     return(

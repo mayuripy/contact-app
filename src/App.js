@@ -9,12 +9,13 @@ import Contactlist from "./components/Contactlist";
 function App() {
   const LOCAL_STORAGE_KEY = "CONTACTS";
 
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(JSON.parse(localStorage.getItem('CONTACTS')) ?? []);
 
   const addcontactHandler = (contact) => {
     console.log(contact);
     setContacts([...contacts, { id: uuidv4(), ...contact }]);
     console.log(contacts);
+    localStorage.removeItem(LOCAL_STORAGE_KEY)
     localStorage.setItem(
       LOCAL_STORAGE_KEY,
       JSON.stringify(contacts)
@@ -26,14 +27,19 @@ function App() {
       return contact.id !== id;
     });
     setContacts(newContactlist);
-  };
-
-  useEffect(() => {
-    const retriveContacts = localStorage.setItem(
+    localStorage.removeItem(LOCAL_STORAGE_KEY)
+    localStorage.setItem(
       LOCAL_STORAGE_KEY,
       JSON.stringify(contacts)
     );
-    console.log(retriveContacts)
+  };
+
+  useEffect(() => {
+    localStorage.setItem(
+      LOCAL_STORAGE_KEY,
+      JSON.stringify(contacts)
+    );
+  
   }, [contacts]);
 
   // useInsertionEffect(() => {

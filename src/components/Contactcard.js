@@ -6,7 +6,7 @@ const Contactcard = (props) => {
   console.log(props.contact)
     return(
         <div className="item">
-          <img className="ui avater image" src={user?user:''} alt="user"/>
+          <img style={{height: '30px', width: '30px'}} className="ui avater image" src={user?user:''} alt="user"/>
        <div className="contact">
          <div className="header"> {name}</div>
          <div>{email}</div>

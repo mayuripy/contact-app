@@ -20,7 +20,7 @@ const Contactlist = (props) => {
   });
 
   return (
-    <div className="main">
+    <div style={{marginTop: '50px'}} className="main">
       <h2>
         Contact list
         <Link to="/add">

@@ -29,6 +29,12 @@ const Contactlist = (props) => {
           <button style={{marginRight: '10px', marginLeft: '10px'}} className="ui button blue right"> Add contact</button>
         </Link>
       </h2>
+      <div className="ui search">
+        <div className="ui icon input">
+          <input type ="text"placeholder="search contacts" className="propt"/>
+          <i className="search icon"></i>
+        </div>
+      </div>
       <div className="ui celled list">
         {renderContactList}
       </div>

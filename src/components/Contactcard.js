@@ -1,23 +1,25 @@
 import React from 'react';
-import user from "../images/user.png"
 
-const Contactcard = (props) => {
-  const{id,name,email} = props.contact;
-  console.log(props.contact)
+const ContactCard = (props) => {
+  // console.log(props)
     return(
         <div className="item">
-          <img style={{height: '30px', width: '30px'}} className="ui avater image" src={user?user:''} alt="user"/>
        <div className="contact">
-         <div  className="header"> {name}</div>
-         <div>{email}</div>
-
+         <div className="header">
+           {props.contact.name}
+          </div>
+         <div>
+          {props.contact.email}
+          </div>
          </div>
-         <i className="trash alternate outline icon"
-         style={{ color:"red", marginTop:"7px" }}
-         onClick={() => props.clickHander(id)}
-         ></i>
-       </div>
+        <i className="trash alternate outline icon"/>
+       
+          <i className="trash alternate outline icon"
+          style={{ color:"red", marginTop: "7px" }}
+          onclick={() => props.clickHander(props.contact.id)}
+          />
+          </div>
+
     );
 };
-
-export default Contactcard;
+export default ContactCard;

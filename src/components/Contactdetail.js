@@ -1,9 +1,9 @@
 import React from 'react';
-import { link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import user from "../images/user.png"
 
 
-const Contactcard = (props) => {
+const Contactdetail = (props) => {
     const{name,email} = props.location.state.contact;
   
   
@@ -27,4 +27,4 @@ const Contactcard = (props) => {
     );
 };
 
-export default contactdetail;
+export default Contactdetail;

@@ -8,12 +8,15 @@ import Contactlist from "./components/Contactlist";
 import Contactdetail from './components/Contactdetail';
 // import { uuid } from "uuidv4";
 import uuid from 'react-native-uuid';
+import Editcontact from "./EditContact";
 
 function App() {
   const LOCAL_STORAGE_KEY = "CONTACTS";
 
-  const [contacts, setContacts] = useState(JSON.parse(localStorage.getItem('CONTACTS')) ?? []);
-  const [searchterm,setSearchterm] =useState("");
+ // const [contacts, setContacts] = useState(JSON.parse(localStorage.getItem('CONTACTS')) ?? []);
+  const [searchterm,setContacts] =useState("");
+  const [serchterm,setSearchterm] = usestate([]);
+  const [serchresulte,setserchResulte] = usestate([]);
 
 
   //RetriveContacts
@@ -57,9 +60,24 @@ function App() {
     localStorage.setItem(
       LOCAL_STORAGE_KEY,
       JSON.stringify(contacts)
-    );
-  };
+      );
+    };
+      const SearchHandler =(searchterm) =>{
+        setSearchterm(serchterm);
+        if(serchterm !== ""){
+          const newContactlist =contacts.filter((contact) => {
+            console.log(object.value(contact));
+          });
+        }
+       
+          
 
+      };
+  
+
+   
+
+  
   useEffect(() => {
     const getAllContact = async () => {
       await api.delete('/contacts/${id}');

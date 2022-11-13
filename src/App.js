@@ -8,15 +8,16 @@ import Contactlist from "./components/Contactlist";
 import Contactdetail from './components/Contactdetail';
 // import { uuid } from "uuidv4";
 import uuid from 'react-native-uuid';
-import Editcontact from "./EditContact";
+import Editcontact from "./components/Editcontact.js";
+import Contact from "./api/Contact.js";
 
 function App() {
   const LOCAL_STORAGE_KEY = "CONTACTS";
 
- // const [contacts, setContacts] = useState(JSON.parse(localStorage.getItem('CONTACTS')) ?? []);
-  const [searchterm,setContacts] =useState("");
-  const [serchterm,setSearchterm] = usestate([]);
-  const [serchresulte,setserchResulte] = usestate([]);
+ const [contacts, setContacts] = useState(JSON.parse(localStorage.getItem('CONTACTS')) ?? []);
+  // const [searchterm,setContacts] =useState("");
+  const [searchTerm,setSearchterm] = useState([]);
+  const [searchResults,setSearchResults] = useState([]);
 
 
   //RetriveContacts
@@ -62,14 +63,18 @@ function App() {
       JSON.stringify(contacts)
       );
     };
-      const SearchHandler =(searchterm) =>{
-        setSearchterm(serchterm);
-        if(serchterm !== ""){
+      const SearchHandler =(searchTerm) =>{
+        setSearchterm(searchTerm);
+        if(searchTerm !== ""){
           const newContactlist =contacts.filter((contact) => {
-            console.log(object.value(contact));
+           return Object.value(contact).join("").toLowercase().includes(searchTerm.toLowercase());
           });
+
+          setSearchResults(newContactlist);
         }
-       
+          else {
+            setSearchResults(contacts);
+          }
           
 
       };
@@ -108,9 +113,9 @@ function App() {
             exact path="/"
             element={
               <Contactlist
-                contacts={contacts}
+                contacts={searchTerm.length < 1?contacts:searchResults}
                 removecontact={removecontact}
-                term={searchterm}
+                term={searchTerm}
                 // searchKeyword={SearchHandler}
               />
             }
@@ -124,7 +129,7 @@ function App() {
             <Route
             exact path="/edit"
             element={
-              <editcontact contacts={contacts} updatecontactHandler={updatecontactHandler} />
+              <Editcontact contacts={contacts} updatecontactHandler={updatecontactHandler} />
             }
             
             />

@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 
-class Editcontact extends  react.Component{
-  constructure(props){
+class Editcontact extends  React.Component{
+  constructor(props){
     super(props)
     const{ id,name,email} =props.location.state.contact;
-    this,state = {
+    this.state = {
       id,
       name,
       email,
@@ -55,4 +55,4 @@ class Editcontact extends  react.Component{
 
 }
 
-export default Addcontact;
+export default Editcontact ;

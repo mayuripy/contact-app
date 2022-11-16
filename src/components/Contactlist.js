@@ -4,22 +4,25 @@ import Contactcard from "./Contactcard.js";
 
 const Contactlist = (props) => {
 
-  console.log(props.contacts[0]);
+  console.log(props.Contacts[0]);
   // const contacts = props.contacts[0].id;
 
   const deleteContactHandler = (id) => {
     props.removecontact(id);
   };
 
-  const renderContactList = props.contacts.map((contact) => {
+  const renderContactList = props.Contacts.map((Contact) => {
     return (
       <Contactcard
-        contact={contact}
+        Contact={Contact}
         clickHander={deleteContactHandler}
-        key={contact.id}
+        key={Contact.id}
       />
     );
   });
+    const getSerchTerm =() => {
+      props.getSerchKeyword (inputEl.currrent.value);
+    }
 
   return (
     <div style={{marginTop: '50px'}} className="main">
@@ -31,12 +34,12 @@ const Contactlist = (props) => {
       </h2>
       <div className="ui search">
         <div className="ui icon input">
-          <input type ="text"placeholder="search contacts" className="propt"/>
+          <input ref={inputEl} type ="text"placeholder="search contacts" className="propt" value={props.term} oncharge/>
           <i className="search icon"></i>
         </div>
       </div>
       <div className="ui celled list">
-        {renderContactList}
+        {renderContactList.length > 0 ? rendercontactlist:"No contacts available"}
       </div>
     </div>
   );
